@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling: Future Grind</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <button class="nav-link active" onclick="showPage('home')">Home</button>
+            <button class="nav-link" onclick="showPage('stats')">Stats</button>
+            <button class="nav-link" onclick="showPage('progression')">Progression</button>
+            <button class="nav-link" onclick="showPage('exam-urgent')">Exam Urgent</button>
+        </nav>
+
+        <!-- Pages -->
+        <div id="home" class="page active">
+            <h1>Daily Quests</h1>
+            <div id="player-stats">
+                <p>Rank: <span id="rank">Shadow Initiate</span></p>
+                <p>Level: <span id="level">1</span></p>
+                <p>XP: <span id="xp">0</span>/<span id="max-xp">100</span></p>
+                <div class="progress-bar">
+                    <div id="xp-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+            <button id="reset-daily" onclick="resetDailyQuests()">Reset Daily</button>
+            <ul id="daily-quest-list"></ul>
+            <p><a href="#" onclick="showPage('exam-urgent')">Access Exam Urgent Quests</a></p>
+            <p id="motivation-text">Step into the gate—your journey begins now.</p>
+            <p id="penalty-text" style="color: #ff4d4d; display: none;">Penalty Zone: The shadows grow restless.</p>
+        </div>
+
+        <div id="stats" class="page">
+            <h1>Stats</h1>
+            <div id="daily-stats">
+                <p>Sleep: <span id="sleep-progress">0 hours</span></p>
+                <div class="progress-bar">
+                    <div id="sleep-bar" style="width: 0%;"></div>
+                </div>
+                <p>Study: <span id="study-progress">0 hours</span></p>
+                <div class="progress-bar">
+                    <div id="study-bar" style="width: 0%;"></div>
+                </div>
+                <p>Workout: <span id="workout-progress">0 mins</span></p>
+                <div class="progress-bar">
+                    <div id="workout-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+            <h3>Exam Subjects</h3>
+            <div id="subject-stats">
+                <p>Economics: <span id="econ-progress">0%</span></p>
+                <div class="progress-bar">
+                    <div id="econ-bar" style="width: 0%;"></div>
+                </div>
+                <p>Business Analytics: <span id="ba-progress">0%</span></p>
+                <div class="progress-bar">
+                    <div id="ba-bar" style="width: 0%;"></div>
+                </div>
+                <p>Spreadsheet: <span id="ss-progress">0%</span></p>
+                <div class="progress-bar">
+                    <div id="ss-bar" style="width: 0%;"></div>
+                </div>
+                <p>Financial Management: <span id="fm-progress">0%</span></p>
+                <div class="progress-bar">
+                    <div id="fm-bar" style="width: 0%;"></div>
+                </div>
+                <p>English: <span id="eng-progress">0%</span></p>
+                <div class="progress-bar">
+                    <div id="eng-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="progression" class="page">
+            <h1>Progression</h1>
+            <p>Total Quests Completed: <span id="total-completed">0</span></p>
+            <p>Daily Quests Completed: <span id="daily-completed">0</span></p>
+            <p>Exam Urgent Quests Completed: <span id="exam-completed">0</span></p>
+        </div>
+
+        <div id="exam-urgent" class="page">
+            <h1>Exam Urgent Quests</h1>
+            <p>Time Remaining: <span id="countdown">14 days</span></p>
+            <ul id="exam-quest-list"></ul>
+            <div id="quest-editor">
+                <h3>Manage Quests</h3>
+                <input id="new-quest-name" placeholder="Quest Name">
+                <input id="new-quest-xp" type="number" placeholder="XP" min="1">
+                <select id="new-quest-stat">
+                    <option value="economics">Economics</option>
+                    <option value="businessAnalytics">Business Analytics</option>
+                    <option value="spreadsheet">Spreadsheet</option>
+                    <option value="financialManagement">Financial Management</option>
+                    <option value="english">English</option>
+                </select>
+                <button onclick="addQuest()">Add Quest</button>
+            </div>
+        </div>
+
+        <!-- Level Up Alert -->
+        <div id="level-up-alert" class="alert">
+            <div class="alert-content">
+                <h2>Level Up!</h2>
+                <p>You’ve reached Level <span id="new-level"></span>!</p>
+                <p>New Title: <span id="new-title"></span></p>
+                <button onclick="closeAlert()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
